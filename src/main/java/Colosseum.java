@@ -73,6 +73,36 @@ public class Colosseum {
      */
     public static Pokemon buildPokemon() {
         Pokemon tempPokemon = new Pokemon();
+        myScan = new Scanner(System.in);
+
+        //Getting the name of the pokemon
+        System.out.print("Please name your Pokemon: ");
+        if (myScan.hasNext()) {
+            tempPokemon.name = myScan.next();
+        } else {
+            while (myScan.next() != null) {
+                System.out.print("Please name your Pokemon: ");
+                tempPokemon.name = myScan.next();
+            }
+        }
+
+        //setting hitpoints of the pokemon
+        System.out.print("How many hit points will it have?: ");
+        if (myScan.hasNext()) {
+            if (myScan.nextInt() > 0 && myScan.nextInt() < MAX_HIT_POINTS) {
+                tempPokemon.hitPoints = myScan.nextInt();
+            } else {
+                while (myScan.nextInt() < 1 && myScan.nextInt() > MAX_HIT_POINTS) {
+                    System.out.print("Sorry. Hit points must be between 1 and 50: ");
+                    tempPokemon.hitPoints = myScan.nextInt();
+                }
+            }
+        }
+        
+        System.out.print(tempPokemon.hitPoints); 
+
+        //
+
         return tempPokemon;
     }
 
@@ -91,6 +121,7 @@ public class Colosseum {
      */
     public static void printWhoIsAhead() {
         System.out.println("Implement me!");
+
     }
 
     /**
